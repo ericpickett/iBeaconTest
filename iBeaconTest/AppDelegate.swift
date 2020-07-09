@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         unwrappedWindow.rootViewController = initialViewController
         unwrappedWindow.makeKeyAndVisible()
         
-        print("launched: \(Date())")
+        os_log("Launched at %s", Date().description(with: .current))
         
         LocationManager.shared.requestAlwaysAuthorization()
         
@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
-        print("backgrounded: \(Date())")
+        os_log("Sent to background at %s", Date().description(with: .current))
     }
     
 }
