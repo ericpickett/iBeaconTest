@@ -25,6 +25,7 @@ class LocationManager: CLLocationManager {
         let content = UNMutableNotificationContent()
         content.title = "iBeacon Event"
         content.body = message
+        content.sound = UNNotificationSound.default
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: nil)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
