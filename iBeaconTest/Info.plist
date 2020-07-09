@@ -21,9 +21,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>buttes</string>
+	<string>iBeacon Test</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>buttes</string>
+	<string>iBeacon Test</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
