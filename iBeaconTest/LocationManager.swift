@@ -38,7 +38,7 @@ extension LocationManager: CLLocationManagerDelegate {
             self.presentAlert(message: "Entered region \(beaconRegion.proximityUUID)\nMajor: \(beaconRegion.major ?? -1)\nMinor: \(beaconRegion.minor ?? -1)")
             os_log("Entered region: %s", beaconRegion.proximityUUID.uuidString)
             os_log("Major: %d, Minor: %d", beaconRegion.major?.int16Value ?? -1, beaconRegion.minor?.int16Value ?? -1)
-            self.startRangingBeacons(in: beaconRegion)
+            LocationManager.shared.startRangingBeacons(in: beaconRegion)
         }
     }
     
@@ -48,6 +48,7 @@ extension LocationManager: CLLocationManagerDelegate {
             self.presentAlert(message: "Exited region \(beaconRegion.proximityUUID)\nMajor: \(beaconRegion.major ?? -1)\nMinor: \(beaconRegion.minor ?? -1)")
             os_log("Exited region: %s", beaconRegion.proximityUUID.uuidString)
             os_log("Major: %d, Minor: %d", beaconRegion.major?.int16Value ?? -1, beaconRegion.minor?.int16Value ?? -1)
+            LocationManager.shared.startRangingBeacons(in: beaconRegion)
         }
     }
     
@@ -66,6 +67,7 @@ extension LocationManager: CLLocationManagerDelegate {
             default:
                 os_log("Received unknown region state.")
             }
+            LocationManager.shared.startRangingBeacons(in: beaconRegion)
         }
     }
     
@@ -82,6 +84,8 @@ extension LocationManager: CLLocationManagerDelegate {
                     os_log("Logged at: %s", Date().description(with: .current))
                 }
             }
+        } else {
+            os_log("No beacons in range")
         }
     }
 }

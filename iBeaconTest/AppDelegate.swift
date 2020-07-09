@@ -35,6 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let minor = CLBeaconMinorValue(bitPattern: 1)
         let region = CLBeaconRegion(proximityUUID: uuid!, major: major, minor: minor, identifier: id)
         LocationManager.shared.startMonitoring(for: region)
+        LocationManager.shared.startRangingBeacons(in: region)
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound], completionHandler: { successful, error in
             if let errorDescription = error?.localizedDescription {
