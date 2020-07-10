@@ -32,10 +32,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let uuid = UUID(uuidString: "b8e688e6-c021-11ea-91c6-645aede93167")
         let id = "jp.co.bizmobile.iBeaconTest"
         let major = CLBeaconMajorValue(bitPattern: 1)
-        let minor = CLBeaconMinorValue(bitPattern: 1)
-        let region = CLBeaconRegion(proximityUUID: uuid!, major: major, minor: minor, identifier: id)
-        LocationManager.shared.startMonitoring(for: region)
-        LocationManager.shared.startRangingBeacons(in: region)
+        let minor1 = CLBeaconMinorValue(bitPattern: 1)
+        let region1 = CLBeaconRegion(proximityUUID: uuid!, major: major, minor: minor1, identifier: id)
+//        let region1 = CLBeaconRegion(proximityUUID: uuid!, identifier: id)
+        LocationManager.shared.startMonitoring(for: region1)
+        
+        let minor2 = CLBeaconMinorValue(bitPattern: 2)
+        let region2 = CLBeaconRegion(proximityUUID: uuid!, major: major, minor: minor2, identifier: id)
+//        let region2 = CLBeaconRegion(proximityUUID: uuid!, identifier: id)
+        LocationManager.shared.startMonitoring(for: region2)
+        
+        let rangingRegion = CLBeaconRegion(proximityUUID: uuid!, identifier: id)
+        LocationManager.shared.startRangingBeacons(in: rangingRegion)
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound], completionHandler: { successful, error in
             if let errorDescription = error?.localizedDescription {
