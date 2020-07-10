@@ -30,19 +30,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         LocationManager.shared.requestAlwaysAuthorization()
         
         let uuid = UUID(uuidString: "b8e688e6-c021-11ea-91c6-645aede93167")
-        let id = "jp.co.bizmobile.iBeaconTest"
+        let id1 = "jp.co.bizmobile.iBeaconTest1"
         let major = CLBeaconMajorValue(bitPattern: 1)
         let minor1 = CLBeaconMinorValue(bitPattern: 1)
-        let region1 = CLBeaconRegion(proximityUUID: uuid!, major: major, minor: minor1, identifier: id)
-//        let region1 = CLBeaconRegion(proximityUUID: uuid!, identifier: id)
+        let region1 = CLBeaconRegion(proximityUUID: uuid!, major: major, minor: minor1, identifier: id1)
         LocationManager.shared.startMonitoring(for: region1)
         
-        let minor2 = CLBeaconMinorValue(bitPattern: 2)
-        let region2 = CLBeaconRegion(proximityUUID: uuid!, major: major, minor: minor2, identifier: id)
-//        let region2 = CLBeaconRegion(proximityUUID: uuid!, identifier: id)
-        LocationManager.shared.startMonitoring(for: region2)
         
-        let rangingRegion = CLBeaconRegion(proximityUUID: uuid!, identifier: id)
+        let id2 = "jp.co.bizmobile.iBeaconTest2"
+        let minor2 = CLBeaconMinorValue(bitPattern: 2)
+        let region2 = CLBeaconRegion(proximityUUID: uuid!, major: major, minor: minor2, identifier: id2)
+        LocationManager.shared.startMonitoring(for: region2)
+
+        
+        let rangingRegion = CLBeaconRegion(proximityUUID: uuid!, identifier: id1)
         LocationManager.shared.startRangingBeacons(in: rangingRegion)
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound], completionHandler: { successful, error in
